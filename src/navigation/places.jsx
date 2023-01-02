@@ -1,6 +1,7 @@
+import { FontAwesome } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { Platform } from "react-native";
+import { Platform, TouchableOpacity } from "react-native";
 
 import { MapsScreen, NewPlaceScreen, PlaceDetailScreen, PlaceListScreen } from "../screens/index";
 import colors from "../utils/colors";
@@ -23,7 +24,14 @@ const PlacesNavigator = () => {
       <Stack.Screen
         name="Places"
         component={PlaceListScreen}
-        options={({ title: "Direcciones" }, { headerTitleAlign: "center" })}
+        options={({ navigation }) => ({
+          title: "Direcciones",
+          headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("NewPlace")}>
+              <FontAwesome name="plus" size={24} color={colors.black} />
+            </TouchableOpacity>
+          ),
+        })}
       />
       <Stack.Screen
         name="PlaceDetail"
