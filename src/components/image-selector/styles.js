@@ -17,8 +17,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
   },
   title: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 14,
   },
   image: {
     width: "100%",

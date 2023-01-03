@@ -31,17 +31,18 @@ const PlacesNavigator = () => {
               <FontAwesome name="plus" size={24} color={colors.black} />
             </TouchableOpacity>
           ),
+          headerTitleAlign: "center",
         })}
       />
       <Stack.Screen
         name="PlaceDetail"
         component={PlaceDetailScreen}
-        options={({ title: "Detalles de la dirección" }, { headerTitleAlign: "center" })}
+        options={{ title: "Detalle", headerTitleAlign: "center" }}
       />
       <Stack.Screen
         name="NewPlace"
         component={NewPlaceScreen}
-        options={({ title: "Nueva dirección" }, { headerTitleAlign: "center" })}
+        options={{ title: "Nueva dirección", headerTitleAlign: "center" }}
       />
       <Stack.Screen name="Maps" component={MapsScreen} options={{ title: "Mapa" }} />
     </Stack.Navigator>

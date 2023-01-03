@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, TextInput, Button } from "react-native";
+import { View, ScrollView, TextInput, Button } from "react-native";
 import { useDispatch } from "react-redux";
 
-import { ImageSelector } from "../../components";
+import { ImageSelector, LocationSelector } from "../../components";
 import { addPlace } from "../../store/place.slice";
 import colors from "../../utils/colors";
 import { styles } from "./styles";
@@ -13,6 +13,7 @@ const NewPlace = ({ navigation }) => {
   const [coords, setCoords] = useState(null);
   const dispatch = useDispatch();
   const onHandleSave = () => {
+    if (!title) return;
     dispatch(addPlace({ title, image, coords }));
     navigation.navigate("Places");
   };
@@ -22,13 +23,16 @@ const NewPlace = ({ navigation }) => {
   const onImagePicker = (uri) => {
     setImage(uri);
   };
-
+  const onLocationPicker = (location) => {
+    //console.warn(location);
+    setCoords(location);
+  };
   return (
     <ScrollView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>New Place</Text>
-        <TextInput onChangeText={onHandleChange} style={styles.input} />
+        <TextInput onChangeText={onHandleChange} placeholder="Place name" style={styles.input} />
         <ImageSelector onImagePicker={onImagePicker} />
+        <LocationSelector onLocationPicker={onLocationPicker} />
         <View style={styles.button}>
           <Button title="Guardar" color={colors.backgroundDark} onPress={onHandleSave} />
         </View>

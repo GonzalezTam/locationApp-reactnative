@@ -18,8 +18,6 @@ const ImageSelector = ({ onImagePicker }) => {
       quality: 0.7,
     });
 
-    console.warn("image", image);
-
     setPickedUrl(image.uri);
     onImagePicker(image.uri);
   };
@@ -39,7 +37,7 @@ const ImageSelector = ({ onImagePicker }) => {
     <View style={styles.container}>
       <View style={styles.preview}>
         {!pickedUrl ? (
-          <Text style={styles.title}>No hay imagen seleccionada</Text>
+          <Text style={styles.title}>No se selecciono ninguna imagen</Text>
         ) : (
           <Image style={styles.image} source={{ uri: pickedUrl }} />
         )}

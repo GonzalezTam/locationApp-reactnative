@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { URL_GEOCODING } from "../constants/maps";
 import Place from "../models/places";
 const initialState = {
   places: [],
@@ -23,5 +24,23 @@ const placeSlice = createSlice({
 });
 
 export const { addPlace } = placeSlice.actions;
+
+export const savePlace = ({ title, image, coords }) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(URL_GEOCODING(coords?.lat, coords?.lng));
+      if (!response.ok) throw new Error("No se ha podido conectar al servicio");
+
+      const data = await response.json();
+      if (!data.results) throw new Error("No se ha podido encontrar la direccion");
+
+      const address = data.results[0].formatted_address;
+      dispatch(addPlace({ title, image, address, coords }));
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+};
 
 export default placeSlice.reducer;

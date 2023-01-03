@@ -9,10 +9,7 @@ export const styles = StyleSheet.create({
   content: {
     flex: 1,
     justifyContent: "center",
-    margin: 20,
-  },
-  title: {
-    fontSize: 16,
+    margin: 10,
   },
   input: {
     borderBottomColor: colors.black,
