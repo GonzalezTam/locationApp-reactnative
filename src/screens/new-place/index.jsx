@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, ScrollView, TextInput, Button } from "react-native";
+import { View, ScrollView, TextInput, Button, Alert } from "react-native";
 import { useDispatch } from "react-redux";
 
 import { ImageSelector, LocationSelector } from "../../components";
@@ -13,7 +13,10 @@ const NewPlace = ({ navigation }) => {
   const [coords, setCoords] = useState(null);
   const dispatch = useDispatch();
   const onHandleSave = () => {
-    if (!title) return;
+    if (!title) {
+      Alert.alert("Error", "Debe ingresar un nombre", [{ text: "Ok" }]);
+      return;
+    }
     dispatch(addPlace({ title, image, coords }));
     navigation.navigate("Places");
   };
@@ -30,7 +33,11 @@ const NewPlace = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.content}>
-        <TextInput onChangeText={onHandleChange} placeholder="Place name" style={styles.input} />
+        <TextInput
+          onChangeText={onHandleChange}
+          placeholder="Nombre del lugar"
+          style={styles.input}
+        />
         <ImageSelector onImagePicker={onImagePicker} />
         <LocationSelector onLocationPicker={onLocationPicker} />
         <View style={styles.button}>

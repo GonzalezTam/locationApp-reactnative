@@ -6,6 +6,14 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  titleContainer: {
+    alignItems: "center",
+    padding: 20,
+  },
+  title: {
+    fontSize: 20,
+    color: colors.text,
+  },
   imgContainer: {
     width: "100%",
     alignItems: "center",

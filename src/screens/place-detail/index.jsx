@@ -11,6 +11,9 @@ const PlaceDetail = ({ navigation, route }) => {
   //console.warn(place);
   return (
     <ScrollView style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>{place.title}</Text>
+      </View>
       {place.image ? (
         <Image source={{ uri: place.image }} style={styles.image} />
       ) : (
