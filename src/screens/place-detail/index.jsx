@@ -8,7 +8,7 @@ const PlaceDetail = ({ navigation, route }) => {
   const { placeId } = route.params;
 
   const place = useSelector((state) => state.place.places.find((place) => place.id === placeId));
-  //console.warn(place);
+  console.warn(place);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.titleContainer}>

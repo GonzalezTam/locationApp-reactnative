@@ -27,7 +27,7 @@ const NewPlace = ({ navigation }) => {
     setImage(uri);
   };
   const onLocationPicker = (location) => {
-    //console.warn(location);
+    console.warn(location);
     setCoords(location);
   };
   return (

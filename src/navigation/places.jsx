@@ -1,7 +1,7 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { Platform, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 import { MapsScreen, NewPlaceScreen, PlaceDetailScreen, PlaceListScreen } from "../screens/index";
 import colors from "../utils/colors";
@@ -14,7 +14,7 @@ const PlacesNavigator = () => {
       initialRouteName="Place"
       screenOptions={{
         headerStyle: {
-          backgroundColor: Platform.OS === "android" ? colors.primary : colors.secondary,
+          backgroundColor: colors.primary,
         },
         headerTintColor: colors.black,
         headerTitleStyle: {
