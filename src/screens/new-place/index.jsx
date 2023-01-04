@@ -3,7 +3,7 @@ import { View, ScrollView, TextInput, Button, Alert } from "react-native";
 import { useDispatch } from "react-redux";
 
 import { ImageSelector, LocationSelector } from "../../components";
-import { addPlace } from "../../store/place.slice";
+import { savePlace } from "../../store/place.slice";
 import colors from "../../utils/colors";
 import { styles } from "./styles";
 
@@ -17,7 +17,7 @@ const NewPlace = ({ navigation }) => {
       Alert.alert("Error", "Debe ingresar un nombre", [{ text: "Ok" }]);
       return;
     }
-    dispatch(addPlace({ title, image, coords }));
+    dispatch(savePlace({ title, image, coords }));
     navigation.navigate("Places");
   };
   const onHandleChange = (value) => {

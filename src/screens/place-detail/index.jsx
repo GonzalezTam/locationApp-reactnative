@@ -8,14 +8,16 @@ const PlaceDetail = ({ navigation, route }) => {
   const { placeId } = route.params;
 
   const place = useSelector((state) => state.place.places.find((place) => place.id === placeId));
-  console.warn(place);
+  // eslint-disable-next-line no-unused-vars
+  const { title, image, address, coords } = place || {};
+  const location = JSON.parse(coords) || {};
   return (
     <ScrollView style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{place.title}</Text>
       </View>
-      {place.image ? (
-        <Image source={{ uri: place.image }} style={styles.image} />
+      {image ? (
+        <Image source={{ uri: image }} style={styles.image} />
       ) : (
         <View style={styles.imgContainer}>
           <Text>Imagen no disponible</Text>
@@ -23,11 +25,9 @@ const PlaceDetail = ({ navigation, route }) => {
       )}
       <View style={styles.location}>
         <View style={styles.addressContainer}>
-          <Text style={styles.address}>{place.address}</Text>
+          <Text style={styles.address}>{address}</Text>
         </View>
-        <MapPreview
-          style={styles.map}
-          location={{ lat: place?.coords?.lat, lng: place?.coords?.lng }}>
+        <MapPreview style={styles.map} location={{ lat: location?.lat, lng: location?.lng }}>
           <Text>Ubicacion no disponible</Text>
         </MapPreview>
       </View>
